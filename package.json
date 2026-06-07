@@ -1,0 +1,12 @@
+{
+  "name": "events-duplicator-tests",
+  "version": "1.0.0",
+  "description": "Tests for the events-duplicator Google Apps Script",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

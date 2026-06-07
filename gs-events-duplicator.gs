@@ -17,6 +17,11 @@ function isMultiDay(startTime, endTime) {
 }
 
 function copyNewEventsFromMultipleCalendars() {
+  // Check if synchronization is globally enabled
+  if (typeof enableSynchronization !== 'undefined' && !enableSynchronization) {
+    Logger.log('Synchronization is globally disabled in configuration.');
+    return;
+  }
   debugLogs = []; // Clear previous debug logs at the start of each run
   var lock = LockService.getScriptLock();
 

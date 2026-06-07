@@ -63,6 +63,9 @@ const timeWindow = getTimeWindow(0, 2);  // Now through 2 months ahead
 // Debug mode (verbose email logs)
 var debug = false;
 
+// Globally enable or disable synchronization without disabling the trigger
+const enableSynchronization = true;
+
 // Email recipients for sync reports
 const emails = ['you@example.com'];
 ```
@@ -117,6 +120,7 @@ Set up automatic synchronization with a time-based trigger:
 |---------|----------------|
 | **Time window** | Keep minimal (e.g., 0–2 months) to reduce API calls and processing time |
 | **Debug mode** | Enable temporarily (`debug = true`) for diagnostics; adds verbose logs to emails |
+| **Enable sync** | Globally enable or disable synchronization (`enableSynchronization = true/false`) without disabling the trigger |
 | **Source names** | Use short, recognizable names—they appear in event prefixes |
 | **Sync frequency** | Every 2–4 hours balances freshness with quota usage |
 
