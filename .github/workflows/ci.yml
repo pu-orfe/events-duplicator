@@ -18,8 +18,10 @@ jobs:
         run: |
           if ! command -v docker-compose &> /dev/null; then
             echo "Creating docker-compose wrapper..."
-            sudo sh -c 'echo "#!/bin/sh" > /usr/local/bin/docker-compose'
-            sudo sh -c 'echo "exec docker compose \"\\\$@\"" >> /usr/local/bin/docker-compose'
+            sudo tee /usr/local/bin/docker-compose << 'EOF'
+#!/bin/sh
+exec docker compose "$@"
+EOF
             sudo chmod +x /usr/local/bin/docker-compose
           fi
 
