@@ -14,6 +14,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up docker-compose wrapper
+        run: |
+          if ! command -v docker-compose &> /dev/null; then
+            echo "Creating docker-compose wrapper..."
+            sudo sh -c 'echo "#!/bin/sh" > /usr/local/bin/docker-compose'
+            sudo sh -c 'echo "exec docker compose \"\\\$@\"" >> /usr/local/bin/docker-compose'
+            sudo chmod +x /usr/local/bin/docker-compose
+          fi
+
       - name: Run tests inside Docker
         run: |
           docker-compose up --build --abort-on-container-exit
